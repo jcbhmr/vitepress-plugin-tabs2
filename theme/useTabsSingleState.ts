@@ -1,23 +1,23 @@
-import { provide, type InjectionKey, type Ref, inject } from 'vue'
+import { provide, type InjectionKey, type Ref, inject } from "vue";
 
 type TabsSingleState = {
-  uid: string
-  selected: Ref<string>
-}
+  uid: string;
+  selected: Ref<string>;
+};
 
 const injectionKey: InjectionKey<TabsSingleState> =
-  'vitepress:tabSingleState' as unknown as symbol
+  "vitepress:tabSingleState" as unknown as symbol;
 
 export const provideTabsSingleState = (state: TabsSingleState) => {
-  provide(injectionKey, state)
-}
+  provide(injectionKey, state);
+};
 
 export const useTabsSingleState = () => {
-  const singleState = inject(injectionKey)
+  const singleState = inject(injectionKey);
   if (!singleState) {
     throw new Error(
-      '[vitepress-plugin-tabs] TabsSingleState should be injected'
-    )
+      "[vitepress-plugin-tabs] TabsSingleState should be injected",
+    );
   }
-  return singleState
-}
+  return singleState;
+};

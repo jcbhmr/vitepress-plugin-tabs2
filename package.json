@@ -1,5 +1,6 @@
 {
   "name": "vitepress-plugin-tabs2",
+  "version": "2.0.0",
   "type": "module",
   "devDependencies": {
     "@types/node": "^20.8.8",
@@ -11,14 +12,22 @@
   },
   "exports": "./index.js",
   "scripts": {
-    "dev": "npm run -w ./test dev",
-    "test": "npm run -w ./test build"
+    "dev": "vitepress dev test",
+    "test": "vitepress build test",
+    "format": "prettier -w ."
   },
   "workspaces": [
-    "test"
+    "test",
+    "docs/examples/*"
   ],
   "dependencies": {
     "callsites": "^4.1.0",
     "markdown-it-container": "^3.0.0"
-  }
+  },
+  "files": [
+    "index.js",
+    "markdown-it-tabs2.js",
+    "lib",
+    "theme"
+  ]
 }

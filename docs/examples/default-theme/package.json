@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vitepress": "^1.0.0-rc.24",
+    "vitepress-plugin-tabs2": "github:jcbhmr/vitepress-plugin-tabs2"
+  }
+}

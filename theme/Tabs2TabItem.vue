@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useTabsSingleState } from './useTabsSingleState.ts'
+import { useTabsSingleState } from "./useTabsSingleState.ts";
 
-defineProps<{ label: string }>()
+defineProps<{ label: string }>();
 
-const { uid, selected } = useTabsSingleState()
+const { uid, selected } = useTabsSingleState();
 </script>
 
 <template>
@@ -32,12 +32,12 @@ const { uid, selected } = useTabsSingleState()
   margin-bottom: 0;
 }
 
-.plugin-tabs--content > :deep(div[class*='language-']) {
+.plugin-tabs--content > :deep(div[class*="language-"]) {
   border-radius: 8px;
   margin: 16px 0px;
 }
 
-:root:not(.dark) .plugin-tabs--content :deep(div[class*='language-']) {
+:root:not(.dark) .plugin-tabs--content :deep(div[class*="language-"]) {
   background-color: var(--vp-c-bg);
 }
 </style>

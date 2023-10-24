@@ -1,36 +1,36 @@
-import type { Ref } from 'vue'
-import { nextTick } from 'vue'
+import type { Ref } from "vue";
+import { nextTick } from "vue";
 
 type StabilizeScrollPosition = <Args extends readonly unknown[], Return>(
-  func: (...args: Args) => Return
-) => (...args: Args) => Promise<Return>
+  func: (...args: Args) => Return,
+) => (...args: Args) => Promise<Return>;
 
 export const useStabilizeScrollPosition = (
-  targetEle: Ref<HTMLElement | undefined>
+  targetEle: Ref<HTMLElement | undefined>,
 ) => {
-  if (typeof document === 'undefined') {
+  if (typeof document === "undefined") {
     const mock: StabilizeScrollPosition =
-      f =>
+      (f) =>
       async (...args) =>
-        f(...args)
-    return { stabilizeScrollPosition: mock }
+        f(...args);
+    return { stabilizeScrollPosition: mock };
   }
 
-  const scrollableEleVal = document.documentElement
+  const scrollableEleVal = document.documentElement;
 
   const stabilizeScrollPosition: StabilizeScrollPosition =
-    func =>
+    (func) =>
     async (...args) => {
-      const result = func(...args)
-      const eleVal = targetEle.value
-      if (!eleVal) return result
+      const result = func(...args);
+      const eleVal = targetEle.value;
+      if (!eleVal) return result;
 
-      const offset = eleVal.offsetTop - scrollableEleVal.scrollTop
-      await nextTick()
-      scrollableEleVal.scrollTop = eleVal.offsetTop - offset
+      const offset = eleVal.offsetTop - scrollableEleVal.scrollTop;
+      await nextTick();
+      scrollableEleVal.scrollTop = eleVal.offsetTop - offset;
 
-      return result
-    }
+      return result;
+    };
 
-  return { stabilizeScrollPosition }
-}
+  return { stabilizeScrollPosition };
+};

@@ -1,47 +1,47 @@
 <script setup lang="ts">
-import { ref, toRef } from 'vue'
-import { useStabilizeScrollPosition } from './useStabilizeScrollPosition.ts'
-import { useTabsSelectedState } from './useTabsSelectedState.ts'
-import { useUid } from './useUid.ts'
-import { useTabLabels } from './useTabLabels.ts'
-import { provideTabsSingleState } from './useTabsSingleState.ts'
+import { ref, toRef } from "vue";
+import { useStabilizeScrollPosition } from "./useStabilizeScrollPosition.ts";
+import { useTabsSelectedState } from "./useTabsSelectedState.ts";
+import { useUid } from "./useUid.ts";
+import { useTabLabels } from "./useTabLabels.ts";
+import { provideTabsSingleState } from "./useTabsSingleState.ts";
 
-const props = defineProps<{ sharedStateKey?: string }>()
+const props = defineProps<{ sharedStateKey?: string }>();
 
-const tabLabels = useTabLabels()
+const tabLabels = useTabLabels();
 
 const { selected, select } = useTabsSelectedState(
   tabLabels,
-  toRef(props, 'sharedStateKey')
-)
+  toRef(props, "sharedStateKey"),
+);
 
-const tablist = ref<HTMLDivElement>()
-const { stabilizeScrollPosition } = useStabilizeScrollPosition(tablist)
-const selectStable = stabilizeScrollPosition(select)
+const tablist = ref<HTMLDivElement>();
+const { stabilizeScrollPosition } = useStabilizeScrollPosition(tablist);
+const selectStable = stabilizeScrollPosition(select);
 
-const buttonRefs = ref<HTMLButtonElement[]>([])
+const buttonRefs = ref<HTMLButtonElement[]>([]);
 
 const onKeydown = (e: KeyboardEvent) => {
-  const currentIndex = tabLabels.value.indexOf(selected.value)
-  let selectIndex: number | undefined
+  const currentIndex = tabLabels.value.indexOf(selected.value);
+  let selectIndex: number | undefined;
 
-  if (e.key === 'ArrowLeft') {
+  if (e.key === "ArrowLeft") {
     selectIndex =
-      currentIndex >= 1 ? currentIndex - 1 : tabLabels.value.length - 1
-  } else if (e.key === 'ArrowRight') {
+      currentIndex >= 1 ? currentIndex - 1 : tabLabels.value.length - 1;
+  } else if (e.key === "ArrowRight") {
     selectIndex =
-      currentIndex < tabLabels.value.length - 1 ? currentIndex + 1 : 0
+      currentIndex < tabLabels.value.length - 1 ? currentIndex + 1 : 0;
   }
 
   if (selectIndex !== undefined) {
-    selectStable(tabLabels.value[selectIndex])
-    buttonRefs.value[selectIndex]?.focus()
+    selectStable(tabLabels.value[selectIndex]);
+    buttonRefs.value[selectIndex]?.focus();
   }
-}
+};
 
-const uid = useUid()
+const uid = useUid();
 
-provideTabsSingleState({ uid, selected })
+provideTabsSingleState({ uid, selected });
 </script>
 
 <template>
@@ -95,7 +95,7 @@ provideTabsSingleState({ uid, selected })
 }
 
 .plugin-tabs--tab-list::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -116,7 +116,7 @@ provideTabsSingleState({ uid, selected })
   transition: color 0.25s;
 }
 
-.plugin-tabs--tab[aria-selected='true'] {
+.plugin-tabs--tab[aria-selected="true"] {
   color: var(--vp-plugin-tabs-tab-active-text-color);
 }
 
@@ -125,7 +125,7 @@ provideTabsSingleState({ uid, selected })
 }
 
 .plugin-tabs--tab::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 8px;
@@ -136,7 +136,7 @@ provideTabsSingleState({ uid, selected })
   z-index: 1;
 }
 
-.plugin-tabs--tab[aria-selected='true']::after {
+.plugin-tabs--tab[aria-selected="true"]::after {
   background-color: var(--vp-plugin-tabs-tab-active-bar-color);
 }
 </style>
