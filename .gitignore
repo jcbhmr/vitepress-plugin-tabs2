@@ -1,3 +1,8 @@
+# https://vitepress.dev/
+**/.vitepress/cache
+**/.vitepress/dist
+
+#region https://github.com/github/gitignore/blob/main/Node.gitignore
 # Logs
 logs
 *.log
@@ -104,6 +109,9 @@ dist
 .temp
 .cache
 
+# Docusaurus cache and generated files
+.docusaurus
+
 # Serverless directories
 .serverless/
 
@@ -125,5 +133,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-docs/.vitepress/cache
+#endregion
