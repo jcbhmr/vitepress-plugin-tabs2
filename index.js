@@ -12,8 +12,10 @@ export default async function tabs2() {
         originalUserConfigMarkdownConfig.apply(this, arguments)
     }
     return /** @type {import('vite').PluginOption} */ ({
+        name: "vitepress-plugin-tabs2",
         config(config) {
             injectThemeWrapper(config, import.meta.resolve("./theme/index.ts"))
+            console.debug(config.resolve.alias)
         }
     })
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTabsSingleState } from './useTabsSingleState'
+import { useTabsSingleState } from './useTabsSingleState.ts'
 
 defineProps<{ label: string }>()
 

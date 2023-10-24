@@ -14,7 +14,7 @@ export function useTabLabels(): Ref<string[]> {
         vnode =>
           typeof vnode.type === 'object' &&
           '__name' in vnode.type &&
-          vnode.type.__name === 'PluginTabsTab' &&
+          vnode.type.__name === 'Tabs2TabItem' &&
           vnode.props
       )
       .map(vnode => vnode.props?.label)

@@ -4,6 +4,7 @@ import tabs2 from "vitepress-plugin-tabs2"
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   vite: {
+    clearScreen: false,
     plugins: [tabs2()]
   }
 })
