@@ -1,3 +1,3 @@
-# Vitepress Plugins
+# vitepress-plugin-tabs
 
-See [official website](https://vitepress-plugins.sapphi.red/).
+See [official website](https://vitepress-plugins.sapphi.red/tabs/).
