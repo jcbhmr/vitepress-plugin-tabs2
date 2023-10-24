@@ -9,5 +9,16 @@
     "vitepress": "^1.0.0-rc.24",
     "vue": "^3.3.6"
   },
-  "exports": "./index.node.js"
+  "exports": "./index.js",
+  "scripts": {
+    "dev": "npm run -w ./test dev",
+    "test": "npm run -w ./test build"
+  },
+  "workspaces": [
+    "test"
+  ],
+  "dependencies": {
+    "callsites": "^4.1.0",
+    "markdown-it-container": "^3.0.0"
+  }
 }
